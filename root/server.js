@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var sha256 = require('js-sha256');
 var app = express();
 var fs = require('fs');
-var io = require('socket-io');
+var io = require('socket.io');
 var http = require('http');
 
 app.get('/', (req, res)=>{
