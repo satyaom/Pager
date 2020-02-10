@@ -2,16 +2,18 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>َAnimated Login Form</title>
+    <title>َPager-Login</title>
     <link rel="stylesheet" href="./css/LoginPage.css">
+    <link rel="icon" href="./images/logo.jpeg">
   </head>
   <body>
 
-<form class="box" action="index.html" method="post">
+<form class="box" action="validate()" method="post">
   <h1>Login</h1>
-  <input type="text" name="" placeholder="Username" id="username">
-  <input type="password" name="" placeholder="Password" id="password">
+  <input type="text" name="" placeholder="Username" id="username" @required>
+  <input type="password" name="" placeholder="Password" id="password" @required>
   <input type="submit" name="" value="Login">
+  <a href="signup.html"><p class="account">Create new account?</p></a>
 </form>
 
 

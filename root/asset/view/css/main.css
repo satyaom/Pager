@@ -189,7 +189,7 @@ p.lead {
   font-size: 2.4rem;
   line-height: 1.75;
   margin-bottom: 3.6rem;
-  color: rgba(85, 85, 85, 0.95);
+  color: rgb(0, 0, 0);
 }
 @media only screen and (max-width: 1200px) {
   p.lead {
@@ -1241,7 +1241,7 @@ input::-moz-focus-inner {
   line-height: 1.3125;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
-  color: #cc147f;
+  color: #000000;
   margin-top: 0;
   margin-bottom: 2.1rem;
 }
@@ -1535,7 +1535,7 @@ input::-moz-focus-inner {
   border-radius: 40px;
   background-color: #34c0a9bd;
   border: none;
-  color: #2600ff;
+  color: #ffffff;
   text-align: center;
   font-size: 20px;
   padding: 10px;
@@ -1577,7 +1577,7 @@ input::-moz-focus-inner {
   right: 0;
 }
 .login-button:hover{
-  background-color: #e9f817; 
+  background-color: #bda5a5; 
   font-size: 1.5em;
   transition: inherit;
 }
@@ -1587,7 +1587,7 @@ input::-moz-focus-inner {
   border-radius: 40px;
   background-color: #34c0a9bd;
   border: none;
-  color: #2600ff;
+  color: #ffffff;
   text-align: center;
   font-size: 20px;
   padding: 10px;
@@ -1629,7 +1629,7 @@ input::-moz-focus-inner {
 }
 
 .signup-button:hover{
-  background-color: #e9f817; 
+  background-color: #bda5a5; 
   font-size: 1.5em;
   transition: inherit;
 }
@@ -2253,8 +2253,12 @@ html.no-csstransitions .home-content__main {
 .s-about {
   padding-top: 18rem;
   padding-bottom: 18rem;
-  background-color: #ffffff;
+  background: linear-gradient(45deg, #000000,#684848 , #0093c0);
+	background-size: 400% 400%;
+	-webkit-animation: gradientBG 10s ease infinite;
+	        animation: gradientBG 10s ease infinite;
   position: relative;
+  
 }
 
 
@@ -3449,3 +3453,6 @@ html.no-csstransitions .home-content__main {
 }
 
 /*# sourceMappingURL=main.css.map */
+.text{
+  color: black; 
+}
