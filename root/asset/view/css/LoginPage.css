@@ -32,7 +32,7 @@ body{
     outline: none;
     color: white;
     border-radius: 24px;
-    transition: .5s;
+    transition: 0.5s;
   }
   .box input[type = "text"]:focus,.box input[type = "password"]:focus{
     width: 280px;
