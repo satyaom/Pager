@@ -32,7 +32,7 @@ body{
     outline: none;
     color: white;
     border-radius: 24px;
-    transition: .5s;
+    transition: 0.5s;
   }
   .box input[type = "text"]:focus,.box input[type = "password"]:focus{
     width: 280px;
@@ -103,4 +103,28 @@ a {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+.box input[type = "button"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 32px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type = "button"]:hover{
+  background: #2ecc71;
+}
+
+.account{
+  color: rgb(77, 247, 86);
+  font-style: oblique;
+  text-decoration: underline;
 }
