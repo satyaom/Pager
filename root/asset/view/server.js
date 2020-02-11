@@ -3,9 +3,13 @@ const express = require('express');
 var path = require('path')
 var parser = require('body-parser')
 var app = express();
+var sha256 = require('js-sha256')
 var mysql = require('mysql')
+
+app.set('views',path.join(__dirname,'html'))
+app.set('view engine','hbs')
 app.use(parser.urlencoded({extended:false}));
-const hbs = require('hbs')
+
 
 //variable
 const port = 3000
@@ -68,11 +72,52 @@ app.post('/html/validate', urlencoded, (request, response)=>{
             else {
                 response.render('Error', {
                     error:'Wrong user name or password',
-                    link:'/html',
+                    link:'/',
                     method:'get'
                 })
             }
         }
     })
+})
+app.post('/html/signup', urlencoded, (request, response)=>{
+    name = request.body.first_name +' '+request.body.last_name;
+    pno = request.body.phone_number;
+    dob = request.body.date;
+    user = request.body.email;
+    password = sha256(request.body.pass);
+    //token generator
+    token = sha256(user);
+    var sql = `insert into employee values ("${token}", "${name}", "${pno}", "${dob}", "${user}");`;
+    
+    con.query(sql, (err, result)=>{
+        
+        if(err!=null && err.sqlMessage=="Duplicate entry '"+token+"' for key 'PRIMARY'")
+        {
+        
+        response.render('Error',{
+            error:"Already Signed up.",
+            link:'/',
+            method:'get'
+        })
+        }
+        else if(err){
+            response.render('Error', {
+                error:'could\'t connect to database',
+                link:'/',
+                method:'get'
+            })
+        }
+        else {
+            response.render('submit', {
+                Name:name, 
+                Token:token,
+                link:'/',
+                method:'get'
+            })
+        }
+    })
+    var sql = `insert into login values ("${user}", "${password}");`;
+    con.query(sql);
+   
 })
 app.listen(port, ()=>console.log(`listening at ${port}`));
