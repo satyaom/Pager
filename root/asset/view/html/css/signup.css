@@ -128,3 +128,6 @@ a {
   font-style: oblique;
   text-decoration: underline;
 }
+::placeholder {
+  color: rgb(255, 255, 255);
+}
