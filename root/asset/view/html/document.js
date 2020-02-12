@@ -65,7 +65,7 @@ var server = http.createServer(function(req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
 
   // Server index.html
-  fs.readFile('document.hbs', function(err, data) {
+  fs.readFile('document.hbs',{name:'Satyam' } , function(err, data) {
     res.end(data);
   });
 });
