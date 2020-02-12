@@ -14,7 +14,7 @@
     <a href="../"><img src="images/logo.jpeg" alt="" srcset="" height="85px" width="130px"></a>
 
     <h1>Sign-Up</h1>
-    <input type="text" name="first_name" placeholder="First Name" id="username" @required>
+    <input type="text" name="first_name" placeholder="First Name" id="firstname" @required>
     <input type="text" name="last_name" placeholder="Last Name" id="lastname" @required>
     <input type="text" name="phone_number" placeholder="Phone Number" id="phone" maxlength="10" @required>
     <input type="text" name="date" placeholder="D.O.B." id="dob" onfocus="(this.type='date')" @required>
@@ -30,11 +30,11 @@
 </body>
 
 <script>
-  var username = document.forms["form"]["username"];
-  var username = document.forms["form"]["username"];
-  var username = document.forms["form"]["username"];
-  var username = document.forms["form"]["username"];
-  var username = document.forms["form"]["username"];
+  var firstname = document.forms["form"]["firstname"];
+  var lastname = document.forms["form"]["lastname"];
+  var phone = document.forms["form"]["phone"];
+  var dob = document.forms["form"]["dob"];
+  var email = document.forms["form"]["email"];
   var password = document.forms["form"]["password"];
   console.log(username + password);
   var name_error = document.getElementById("username");
@@ -43,7 +43,7 @@
   username.addEventListener("blur", nameVerify, true);
   password.addEventListener("blur", passwordVerify, true);
   function Validate() {
-    if (username.value == "" && password.value == "") {
+    if (firstname.value == "" && password.value == ""&& lastname.value == "" && phone.value == "" && dob.value == "" && email.value == "") {
       username.style.border = "1px solid red";
       document.getElementById("login_username").innerHTML = "Username is Required";
       document.getElementById("login_username").style.color = "red";
