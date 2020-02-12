@@ -126,14 +126,15 @@ app.post('/html/signup', urlencoded, (request, response)=>{
                 link:'/',
                 method:'get'
             })
+            var sql = `insert into login values ("${user}", "${password}");`;
+            con.query(sql);
+            var keypair = require('keypair');
+            var pair = keypair()
+            sql = `insert into tkey values ("${token}", "${pair.public}", "${pair.private}")`;
+            con.query(sql);
         }
     })
-    var sql = `insert into login values ("${user}", "${password}");`;
-    con.query(sql);
-    var keypair = require('keypair');
-    var pair = keypair()
-    sql = `insert into tkey values ("${token}", "${pair.public}", "${pair.private}")`;
-    con.query(sql);
+    
    
 })
 
