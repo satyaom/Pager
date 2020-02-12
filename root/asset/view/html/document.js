@@ -133,7 +133,7 @@ socket.sockets.on('connection', function(client) {
         con.query(sql, (err, result)=>{
         var privateKey = result[0].private_key;
         console.log(privateKey);
-        const doc = fs.readFileSync('uploads/1.png');
+        const doc = fs.readFileSync(name);
 
         // Signing
         const signer = crypto.createSign('RSA-SHA256');
@@ -146,6 +146,16 @@ socket.sockets.on('connection', function(client) {
         console.log('Digital Signature: ', signature);
         sql = `insert into document values ("${token}", "${signature}", "${result[0].public_key}")`;
         con.query(sql);
+
+        //verify
+        const verifier = crypto.createVerify('RSA-SHA256');
+        verifier.write(doc);
+        verifier.end();
+
+        // Verify file signature ( support formats 'binary', 'hex' or 'base64')
+        const reslt = verifier.verify(result[0].public_key, signature, 'base64');
+
+        console.log('Digital Signature Verification : ' + reslt);
         })
 
         
