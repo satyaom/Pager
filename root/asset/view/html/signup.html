@@ -1,27 +1,166 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>َSign-Up</title>
-    <link rel="stylesheet" href="./css/signup.css">
-    <link rel="icon" href="./images/logo.jpeg">
-  </head>
-  <body>
 
-<form class="box" action="signup" method="post" class="form">
+<head>
+  <meta charset="utf-8">
+  <title>َSign-Up</title>
+  <link rel="stylesheet" href="./css/signup.css">
+  <link rel="icon" href="./images/logo.jpeg">
+</head>
+
+<body>
+
+  <form class="box" action="signup" method="post" class="form">
     <a href="../"><img src="images/logo.jpeg" alt="" srcset="" height="85px" width="130px"></a>
-  
+
     <h1>Sign-Up</h1>
-  <input type="text" name="first_name" placeholder="First Name" id="username" @required>
-  <input type="text" name="last_name" placeholder="Last Name" id="lastname" @required>
-  <input type="text" name="phone_number" placeholder="Phone Number" id="phone" maxlength="10" @required>
-  <input type="text" name="date" placeholder="D.O.B." id="dob" onfocus="(this.type='date')" @required>
-  <input type="email" name="email" placeholder="E-mail" id="email" @required>
-  <input type="password" name="pass" placeholder="Password" id="password" @required>
-  <input type="submit" name="" value="Sign-Up">
-  <a href="LoginPage.html"><p class="account">Login to existing account?</p></a>
-</form>
+    <input type="text" name="first_name" placeholder="First Name" id="firstname" @required><div id = 'login_firtname'></div><br>
+    <div id="first_error"></div>
+    <input type="text" name="last_name" placeholder="Last Name" id="lastname" @required><div id = 'login_lastname'></div><br>
+    <div id="lastname_error"></div>
+    <input type="text" name="phone_number" placeholder="Phone Number" id="phone" maxlength="10" @required><div id = 'login_phone'></div><br>
+    <div id="phone_error"></div>
+    <input type="text" name="date" placeholder="D.O.B." id="dob" onfocus="(this.type='date')" @required><div id = 'login_dob'></div><br>
+    <div id="dob_error"></div>
+    <input type="email" name="email" placeholder="E-mail" id="email" @required><div id = 'login_email'></div><br>
+    <div id="email_error"></div>
+    <input type="passayush" name="pass" placeholder="Password" id="password" @required><div id = 'login_password'></div><br>
+    <div id="password_error"></div>
+    <input type="submit" name="" value="Sign-Up">
+    <a href="LoginPage.html">
+      <p class="account">Login to existing account?</p>
+    </a>
+  </form>
 
 
-  </body>
+</body>
+
+<script>
+  var firstname = document.forms["form"]["firstname"];
+  var lastname = document.forms["form"]["lastname"];
+  var phone = document.forms["form"]["phone"];
+  var dob = document.forms["form"]["dob"];
+  var email = document.forms["form"]["email"];
+  var password = document.forms["form"]["password"];
+  console.log(lastname + password + lastname + phone + dob + email);
+  var firstname_error = document.getElementById("firstname");
+  var lastname_error = document.getElementById("lastname");
+  var phone_error = document.getElementById("phone");
+  var dob_error = document.getElementById("dob");
+  var email_error = document.getElementById("email");
+  var password_error = document.getElementById("password");
+
+  firstname.addEventListener("blur", firstnameVerify, true);
+  lastname.addEventListener("blur", lastnameVerify, true);
+  phone.addEventListener("blur", phoneVerify, true);
+  dob.addEventListener("blur", dobVerify, true);
+  email.addEventListener("blur", emailVerify, true);
+  password.addEventListener("blur", passwordVerify, true);
+  function Validate() {
+    if (firstname.value == "" && password.value == ""&& lastname.value == "" && phone.value == "" && dob.value == "" && email.value == "") {
+      firstname.style.border = "1px solid red";
+      document.getElementById("login_firstname").innerHTML = "First Name is Required";
+      document.getElementById("login_firstname").style.color = "red";
+      firstname_error.textContent = "First Name is required";
+      firstname.focus();
+      username.style.border = "1px solid red";
+      document.getElementById("login_lastname").innerHTML = "Last Name is Required";
+      document.getElementById("login_lastname").style.color = "red";
+      lastname_error.textContent = "Last Name is required";
+      username.focus();
+      phone.style.border = "1px solid red";
+      document.getElementById("login_Phone").innerHTML = "Phone Number is Required";
+      document.getElementById("login_phone").style.color = "red";
+      phone_error.textContent = "Phone Number is required";
+      phone.focus();
+      dob.style.border = "1px solid red";
+      document.getElementById("login_dob").innerHTML = "D.O.B is Required";
+      document.getElementById("login_dobe").style.color = "red";
+      dob_error.textContent = "D.O.B is required";
+      dob.focus();
+      email.style.border = "1px solid red";
+      document.getElementById("login_email").innerHTML = "EMAIL is Required";
+      document.getElementById("login_emaile").style.color = "red";
+      email_error.textContent = "EMAIL is required";
+      email.focus();
+      password.style.border = "1px solid red";
+      document.getElementById("login_pass").innerHTML = "Password is Required";
+      document.getElementById("login_pass").style.color = "red";
+      password_error.textContent = "Password is required";
+      password.focus();
+      return false;
+
+    }
+    if (username.value == "") {
+      username.style.border = "1px solid red";
+      document.getElementById("login_username").innerHTML = "Username is Required";
+      document.getElementById("login_username").style.color = "red";
+      name_error.textContent = "Username is required";
+      username.focus();
+      return false;
+    }
+    else {
+
+      document.getElementById("login_username").innerHTML = "";
+    }
+    if (password.value == "") {
+      password.style.border = "1px solid red";
+      document.getElementById("login_pass").innerHTML = "Password is Required";
+      document.getElementById("login_pass").style.color = "red";
+      password_error.textContent = "Password is required";
+      password.focus();
+      return false;
+    }
+
+    else {
+
+      document.getElementById("login_username").innerHTML = "";
+    }
+  }
+  function nameVerify() {
+    if (firstname.value != "") {
+      firstname.style.border = "1px solid red";
+      document.getElementById('login_username').style.color = "#5e6e66";
+
+      firstname_error.innerHTML = "Enter Username";
+      return true;
+    }
+  }
+  function lastnameVerify() {
+    if (lastname.value != "") {
+      lastname.style.border = "1px solid red";
+      lastname_error.innerHTML = "";
+      return true;
+    }
+  }
+  function phoneVerify() {
+    if (phone.value != "") {
+      phone.style.border = "1px solid red";
+      phone_error.innerHTML = "";
+      return true;
+    }
+  }
+  function dobVerify() {
+    if (dob.value != "") {
+      dob.style.border = "1px solid red";
+      dob_error.innerHTML = "";
+      return true;
+    }
+  }
+  function emailVerify() {
+    if (email.value != "") {
+      email.style.border = "1px solid red";
+      email_error.innerHTML = "";
+      return true;
+    }
+  }
+  function passwordVerify() {
+    if (password.value != "") {
+      password.style.border = "1px solid red";
+      password_error.innerHTML = "";
+      return true;
+    }
+  }
+</script>
+
 </html>
