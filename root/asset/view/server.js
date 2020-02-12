@@ -78,8 +78,8 @@ app.post('/html/validate', urlencoded, (request, response)=>{
             hashpass = sha256(request.body.pass);
             
             if(pass == hashpass) {
-
-                response.redirect(`http://localhost:${port2}`);
+                var string = encodeURIComponent(sha256(result[0].User));
+                response.redirect(`http://localhost:${port2}?valid=` + string);
             } 
             else {
                 response.render('Error', {
@@ -129,6 +129,10 @@ app.post('/html/signup', urlencoded, (request, response)=>{
         }
     })
     var sql = `insert into login values ("${user}", "${password}");`;
+    con.query(sql);
+    var keypair = require('keypair');
+    var pair = keypair()
+    sql = `insert into tkey values ("${token}", "${pair.public}", "${pair.private}")`;
     con.query(sql);
    
 })
