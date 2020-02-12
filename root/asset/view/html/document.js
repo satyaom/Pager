@@ -51,13 +51,14 @@ for (ct in allowedTypes) {
 var validFile = new RegExp('^\/[a-z]+\/[0-9a-z\-]+\.('+allowedExtensions.join('|')+')$');
 
 
-
+var id = 1
 var server = http.createServer(function(req, res) {
   var token = req.url.slice(8, 73);
-  var id = 1
+  
   sql = `insert into token values(${id},"${token}")`;
+  id += 1
   con.query(sql)
-  console.log(token.length)
+  
   // Serve all allowed files.
   if (validFile.test(req.url)) {
     // substr(1) to strip the leading /
