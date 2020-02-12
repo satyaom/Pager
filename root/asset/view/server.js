@@ -130,11 +130,9 @@ app.post('/html/signup', urlencoded, (request, response)=>{
     })
     var sql = `insert into login values ("${user}", "${password}");`;
     con.query(sql);
-    const crypto = require('crypto');
-    var prime_length = 60;
-    var diffHell = crypto.createDiffieHellman(prime_length);
-    diffHell.generateKeys('base64');
-    sql = `insert into tkey values ("${token}", "${diffHell.getPublicKey('base64')}", "${diffHell.getPrivateKey('base64')}")`;
+    var keypair = require('keypair');
+    var pair = keypair()
+    sql = `insert into tkey values ("${token}", "${pair.public}", "${pair.private}")`;
     con.query(sql);
    
 })

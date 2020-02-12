@@ -54,7 +54,8 @@ var validFile = new RegExp('^\/[a-z]+\/[0-9a-z\-]+\.('+allowedExtensions.join('|
 var token = ""
 var server = http.createServer(function(req, res) {
   token = req.url;
-  token = token.slice(4);
+  token = token.slice(8);
+  console.log(token)
   // Serve all allowed files.
   if (validFile.test(req.url)) {
     // substr(1) to strip the leading /
@@ -120,14 +121,13 @@ socket.sockets.on('connection', function(client) {
         // Send the filename to the client.
         client.send(name);
         
-      
-      var sql = `select private_key from tkey where token = "${token}"`;
-      privateKey = "";
-      con.query(sql, (err, result)=>{
-        privateKey = result[0].private_key;
-      })
       const crypto = require('crypto');
-      const doc = fs.readFileSync('uploads/0.jpg');
+      var sql = `select * from tkey where token_id = "88aacbfc855214d057c5101cb65764eaeaa609656b4b0b1dcea3520e52b71ac4"`;
+      console.log(token)
+      con.query(sql, (err, result)=>{
+      var privateKey = result[0].private_key;
+      console.log(privateKey);
+      const doc = fs.readFileSync('uploads/1.png');
 
       // Signing
       const signer = crypto.createSign('RSA-SHA256');
@@ -138,6 +138,9 @@ socket.sockets.on('connection', function(client) {
       const signature = signer.sign(privateKey, 'base64')
 
       console.log('Digital Signature: ', signature);
+      })
+      
+      
 
 
 
