@@ -1,4 +1,5 @@
-
+const crypto = require('crypto');
+const fs = require('fs');
 var http        = require('http'),
     fs          = require('fs'),
     querystring = require('querystring'),
