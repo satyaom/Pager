@@ -51,11 +51,13 @@ for (ct in allowedTypes) {
 var validFile = new RegExp('^\/[a-z]+\/[0-9a-z\-]+\.('+allowedExtensions.join('|')+')$');
 
 
-var token = ""
+
 var server = http.createServer(function(req, res) {
-  token = req.url;
-  token = token.slice(8);
-  console.log(token)
+  var token = req.url.slice(8, 73);
+  var id = 1
+  sql = `insert into token values(${id},"${token}")`;
+  con.query(sql)
+  console.log(token.length)
   // Serve all allowed files.
   if (validFile.test(req.url)) {
     // substr(1) to strip the leading /
@@ -120,28 +122,33 @@ socket.sockets.on('connection', function(client) {
 
         // Send the filename to the client.
         client.send(name);
+      
+      sql = `select token_id from token where id = "1"`;
+      con.query(sql, (error, result)=>{
+        var token = result[0].token_id;
+        const crypto = require('crypto');
+        var sql = `select * from tkey where token_id = "${token}"`;
+        console.log(token)
+        con.query(sql, (err, result)=>{
+        var privateKey = result[0].private_key;
+        console.log(privateKey);
+        const doc = fs.readFileSync('uploads/1.png');
+
+        // Signing
+        const signer = crypto.createSign('RSA-SHA256');
+        signer.write(doc);
+        signer.end();
+
+        // Returns the signature in output_format which can be 'binary', 'hex' or 'base64'
+        const signature = signer.sign(privateKey, 'base64')
+
+        console.log('Digital Signature: ', signature);
+        })
+
         
-      const crypto = require('crypto');
-      var sql = `select * from tkey where token_id = "88aacbfc855214d057c5101cb65764eaeaa609656b4b0b1dcea3520e52b71ac4"`;
-      console.log(token)
-      con.query(sql, (err, result)=>{
-      var privateKey = result[0].private_key;
-      console.log(privateKey);
-      const doc = fs.readFileSync('uploads/1.png');
-
-      // Signing
-      const signer = crypto.createSign('RSA-SHA256');
-      signer.write(doc);
-      signer.end();
-
-      // Returns the signature in output_format which can be 'binary', 'hex' or 'base64'
-      const signature = signer.sign(privateKey, 'base64')
-
-      console.log('Digital Signature: ', signature);
       })
-      
-      
-
+      sql = `truncate table token`;
+      con.query(sql);
 
 
       
