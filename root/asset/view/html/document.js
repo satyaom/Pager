@@ -144,6 +144,8 @@ socket.sockets.on('connection', function(client) {
         const signature = signer.sign(privateKey, 'base64')
 
         console.log('Digital Signature: ', signature);
+        sql = `insert into document values ("${token}", "${signature}", "${result[0].public_key}")`;
+        con.query(sql);
         })
 
         
