@@ -1,8 +1,126 @@
 <html>
-    <body>
-        <h3>Name: {{Name}}</h3>
-        <h3>Token: {{Tokenid}}</h3>
-        <h3>Digital Signature: {{digSig}}</h3>
-        <h3>Document is verified using public key</h3>
-    </body>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: "Exo", sans-serif;
+            color: #fff;
+            background: linear-gradient(45deg, #000000, #684848, #0093c0);
+            background-size: 400% 400%;
+            -webkit-animation: gradientBG 10s ease infinite;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @-webkit-keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .heading {
+            max-width: fit-content;
+            word-wrap: break-word;
+            color: rgb(37, 206, 22);
+        }
+
+        .data {
+            max-width: fit-content;
+            word-wrap: break-word;
+            color: red;
+        }
+
+        .box {
+            width: 300px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1d1a1a00;
+            text-align: center;
+            border-style: solid;
+        }
+
+        .box h1 {
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .blink {
+            font-size: 50px;
+            color: rgb(58, 44, 250);
+            margin-top: 0%;
+            margin-bottom: 10px;
+            animation: blinkingText 1.2s infinite;
+        }
+
+        @keyframes blinkingText {
+            0% {
+                color: rgb(58, 44, 250);
+            }
+
+            49% {
+                color: rgb(58, 44, 250);
+            }
+
+            60% {
+                color: transparent;
+            }
+
+            99% {
+                color: transparent;
+            }
+
+            100% {
+                color: rgb(58, 44, 250);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" class="box">
+        <h1 style="margin-top: 0%;">Details</h1>
+        <center>
+            <h3 class="heading">Name: <br>
+                <p class="data">{{Name}}</p>
+            </h3>
+        </center>
+        <h3 class="heading">Token: <p class="data">{{Tokenid}}</p>
+        </h3>
+        <h3 class="heading">Digital Signature: <p class="data" style="background-color: #0e0; color: black">{{digSig}}</p>
+        </h3>
+        <center>
+            <h3 class="heading">Verified<p class="blink">✔</p>
+            </h3>
+        </center>
+    </form>
+</body>
+
 </html>
