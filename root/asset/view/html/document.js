@@ -1,4 +1,4 @@
-
+var handlebars = require('handlebars')
 var mysql = require('mysql')
 var http        = require('http'),
     fs          = require('fs'),
@@ -84,9 +84,16 @@ var server = http.createServer(function(req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
 
   // Server index.html
-  fs.readFile('document.hbs',{name:'Satyam' } , function(err, data) {
-    res.end(data);
-  });
+  
+  
+        fs.readFile('document.hbs', function(err, data) {
+          
+            res.end(data);
+          
+        });
+        
+  
+  
 });
 
 
@@ -157,19 +164,25 @@ socket.sockets.on('connection', function(client) {
 
         console.log('Digital Signature Verification : ' + reslt);
         })
-
+        
+        
+        if(reslt){
+        client.send('Digital Signature verified')
+        }
         
       })
-      sql = `truncate table token`;
-      con.query(sql);
-
+      
 
       
       });
     });
   });
+  client.on('digSig', (digSig)=>{
+    client.send(`digital signature - ${signature}`);
+  });
 });
-
+sql = `truncate table token`;
+con.query(sql);
 
 // Never let something run as root when it's not needed!
 if (process.getuid() == 0) {
