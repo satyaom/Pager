@@ -168,12 +168,17 @@ socket.sockets.on('connection', function(client) {
         const reslt = verifier.verify(result[0].public_key, signature, 'base64');
 
         console.log('Digital Signature Verification : ' + reslt);
-        })
-        
-        
-        if(reslt){
-        client.send('Digital Signature verified')
+        const qrcode = require('qrcode');
+        run().catch(error => console.error(error.stack));
+
+        async function run() {
+          const res = await qrcode.toDataURL(signature);
+
+          fs.writeFileSync('./qr.html', `<img src="${res}">`);
+          console.log('Wrote to ./qr.html');
         }
+        })
+      
         
       })
       
@@ -182,9 +187,7 @@ socket.sockets.on('connection', function(client) {
       });
     });
   });
-  client.on('digSig', (digSig)=>{
-    client.send(`digital signature - ${signature}`);
-  });
+  
 });
 sql = `truncate table token`;
 con.query(sql);
