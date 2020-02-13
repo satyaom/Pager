@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset=utf-8>
+    <meta charset=utf-8>
 
-<title>Socket.io File Upload Example</title>
+    <title>File Upload</title>
 
-<link rel=stylesheet href="/css/upload.css" media=all>
+    <link rel=stylesheet href="/css/upload.css" media=all>
 
-<script src="/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
-<script src="/js/upload.js"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script src="/js/upload.js"></script>
 </head>
 
 <body>
-<div class="box">
-<h2>Upload</h2>
 
-<div id="upload">
-<input type="file" id="fileupload" multiple="true">
-</div >
+    <div class="box">
+        <center>
+            <h2>Upload</h2>
 
-<p id="info">
-Drag one or more file to the blue square to upload them.<br>
-Or click the square to select multiple files to upload.
-</p>
+            <div id="upload">
+                <input type="file" id="fileupload" multiple="true">
+            </div>
 
-<h2>Uploaded files</h2>
+            <p id="info">
+                Drag one or more file to the black square to upload them.<br>
+                Or click the square to select multiple files to upload.
+            </p>
 
+            <h2>Uploaded files</h2>
+
+<<<<<<< HEAD
 <div id="uploaded"></div>
 </div>
 <a href="localhost:7000">Check your detail</a>
 
 
+=======
+            <div id="uploaded"></div>
+            <br>
+            <div style="font-size: 30px; color: #ffffff; background-color: yellow;">
+                <a href="localhost:7000">Verification Status</a>
+            </div>
+        </center>
+    </div>
+>>>>>>> 1f5af764a099c979f464321c07230d3fba499476
 </body>
+
 </html>

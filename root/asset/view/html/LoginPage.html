@@ -9,7 +9,7 @@
   </head>
   <body>
 
-<form class="box" action="validate" method="post" name="form" onsubmit="return Validate()">
+<form class="box" action="Validate" method="post" name="form" onsubmit="return Validatejs()">
   <a href="../"><img src="images/logo.jpeg" alt="" srcset="" height="85px" width="130px"></a>
   
   <h1>Login</h1>
@@ -32,9 +32,7 @@ var password_error = document.getElementById("password");
 
 username.addEventListener("blur", nameVerify, true);
 password.addEventListener("blur", passwordVerify, true);
-function Validate() {
-  // var username = document.getElementById('username').value;
-  // var password = document.getElementById('password').value;
+function Validatejs() {
   if (username.value=="" && password.value==""){
     username.style.border="1px solid red";
     document.getElementById("login_username").innerHTML = "Username is Required";

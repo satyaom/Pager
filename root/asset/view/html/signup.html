@@ -10,157 +10,127 @@
 
 <body>
 
-  <form class="box" action="signup" method="post" class="form">
+  <form class="box" action="signup" method="post" class="form" onsubmit="return Validatejs()">
     <a href="../"><img src="images/logo.jpeg" alt="" srcset="" height="85px" width="130px"></a>
 
     <h1>Sign-Up</h1>
-    <input type="text" name="first_name" placeholder="First Name" id="firstname" @required><div id = 'login_firtname'></div><br>
+    <input type="text" name="first_name" placeholder="First Name" id="firstname" @required>
+    <div id='signup_firstname'></div>
     <div id="first_error"></div>
-    <input type="text" name="last_name" placeholder="Last Name" id="lastname" @required><div id = 'login_lastname'></div><br>
+    <input type="text" name="last_name" placeholder="Last Name" id="lastname" @required>
+    <div id='signup_lastname'></div>
     <div id="lastname_error"></div>
-    <input type="text" name="phone_number" placeholder="Phone Number" id="phone" maxlength="10" @required><div id = 'login_phone'></div><br>
+    <input type="text" name="phone_number" placeholder="Phone Number" id="phone" maxlength="10" @required>
+    <div id='signup_phone'></div>
     <div id="phone_error"></div>
-    <input type="text" name="date" placeholder="D.O.B." id="dob" onfocus="(this.type='date')" @required><div id = 'login_dob'></div><br>
+    <input type="text" name="date" placeholder="D.O.B." id="dob" onfocus="(this.type='date')" @required>
+    <div id='signup_dob'></div>
     <div id="dob_error"></div>
-    <input type="email" name="email" placeholder="E-mail" id="email" @required><div id = 'login_email'></div><br>
+    <input type="email" name="email" placeholder="E-mail" id="email" @required>
+    <div id='signup_email'></div>
     <div id="email_error"></div>
-    <input type="password" name="pass" placeholder="Password" id="password" @required><div id = 'login_password'></div><br>
+    <input type="password" name="pass" placeholder="Password" id="password" @required>
+    <div id='signup_password'></div>
     <div id="password_error"></div>
     <input type="submit" name="" value="Sign-Up">
     <a href="LoginPage.html">
       <p class="account">Login to existing account?</p>
     </a>
   </form>
-
-
 </body>
-
 <script>
-  var firstname = document.forms["form"]["firstname"];
-  var lastname = document.forms["form"]["lastname"];
-  var phone = document.forms["form"]["phone"];
-  var dob = document.forms["form"]["dob"];
-  var email = document.forms["form"]["email"];
-  var password = document.forms["form"]["password"];
-  console.log(lastname + password + lastname + phone + dob + email);
-  var firstname_error = document.getElementById("firstname");
-  var lastname_error = document.getElementById("lastname");
-  var phone_error = document.getElementById("phone");
-  var dob_error = document.getElementById("dob");
-  var email_error = document.getElementById("email");
-  var password_error = document.getElementById("password");
+  function Validatejs() {
+    var fname = document.getElementById("firstname").value;
+    var email = document.getElementById("email").value;
+    var lname = document.getElementById("lastname").value;
+    var dob = document.getElementById("dob").value;
+    var phone = document.getElementById("phone").value
+    var password = document.getElementById("password").value;
+    if (fname == "" && lname == "" && phone == "") {
+      document.getElementById("signup_firstname").innerHTML = "First Name is Required";
+      document.getElementById("signup_firstname").style.color = "Red";
+      document.getElementById("signup_lastname").innerHTML = "Last Name is Required";
+      document.getElementById("signup_lastname").style.color = "Red";
+      document.getElementById("signup_phone").innerHTML = "Phone No is Required";
+      document.getElementById("signup_phone").style.color = "Red";
+      document.getElementById("signup_dob").innerHTML = "D.O.B. is Required";
+      document.getElementById("signup_dob").style.color = "Red";
+      document.getElementById("signup_email").innerHTML = "Email is Required";
+      document.getElementById("signup_email").style.color = "Red";
+      document.getElementById("signup_password").innerHTML = "Password is Required";
+      document.getElementById("signup_password").style.color = "Red";
+      // firstname.style.border="1px solid red";
+      // lastname.style.border="1px solid red";
+      // phone.style.border="1px solid red";
+      // dob.style.border="1px solid red";
+      // email.style.border="1px solid red";
+      // password.style.border="1px solid red";
 
-  firstname.addEventListener("blur", firstnameVerify, true);
-  lastname.addEventListener("blur", lastnameVerify, true);
-  phone.addEventListener("blur", phoneVerify, true);
-  dob.addEventListener("blur", dobVerify, true);
-  email.addEventListener("blur", emailVerify, true);
-  password.addEventListener("blur", passwordVerify, true);
-  function Validate() {
-    if (firstname.value == "" && password.value == ""&& lastname.value == "" && phone.value == "" && dob.value == "" && email.value == "") {
-      firstname.style.border = "1px solid red";
-      document.getElementById("login_firstname").innerHTML = "First Name is Required";
-      document.getElementById("login_firstname").style.color = "red";
-      firstname_error.textContent = "First Name is required";
-      firstname.focus();
-      username.style.border = "1px solid red";
-      document.getElementById("login_lastname").innerHTML = "Last Name is Required";
-      document.getElementById("login_lastname").style.color = "red";
-      lastname_error.textContent = "Last Name is required";
-      username.focus();
-      phone.style.border = "1px solid red";
-      document.getElementById("login_Phone").innerHTML = "Phone Number is Required";
-      document.getElementById("login_phone").style.color = "red";
-      phone_error.textContent = "Phone Number is required";
-      phone.focus();
-      dob.style.border = "1px solid red";
-      document.getElementById("login_dob").innerHTML = "D.O.B is Required";
-      document.getElementById("login_dobe").style.color = "red";
-      dob_error.textContent = "D.O.B is required";
-      dob.focus();
-      email.style.border = "1px solid red";
-      document.getElementById("login_email").innerHTML = "EMAIL is Required";
-      document.getElementById("login_emaile").style.color = "red";
-      email_error.textContent = "EMAIL is required";
-      email.focus();
-      password.style.border = "1px solid red";
-      document.getElementById("login_pass").innerHTML = "Password is Required";
-      document.getElementById("login_pass").style.color = "red";
-      password_error.textContent = "Password is required";
-      password.focus();
       return false;
-
     }
-    if (username.value == "") {
-      username.style.border = "1px solid red";
-      document.getElementById("login_username").innerHTML = "Username is Required";
-      document.getElementById("login_username").style.color = "red";
-      name_error.textContent = "Username is required";
-      username.focus();
+    if (fname == "") {
+      document.getElementById("signup_firstname").innerHTML = "First Name is Required";
+      document.getElementById("signup_firstname").style.color = "Red";
+      firstname.style.border = "1px solid red";
       return false;
     }
     else {
+      document.getElementById("signup_firstname").innerHTML = "";
 
-      document.getElementById("login_username").innerHTML = "";
     }
-    if (password.value == "") {
-      password.style.border = "1px solid red";
-      document.getElementById("login_pass").innerHTML = "Password is Required";
-      document.getElementById("login_pass").style.color = "red";
-      password_error.textContent = "Password is required";
-      password.focus();
-      return false;
-    }
-
-    else {
-
-      document.getElementById("login_username").innerHTML = "";
-    }
-  }
-  function nameVerify() {
-    if (firstname.value != "") {
-      firstname.style.border = "1px solid red";
-      document.getElementById('login_username').style.color = "#5e6e66";
-
-      firstname_error.innerHTML = "Enter Username";
-      return true;
-    }
-  }
-  function lastnameVerify() {
-    if (lastname.value != "") {
+    if (lname == "") {
+      document.getElementById("signup_lastname").innerHTML = "Last Name is Required";
+      document.getElementById("signup_lastname").style.color = "Red";
       lastname.style.border = "1px solid red";
-      lastname_error.innerHTML = "";
-      return true;
+      return false;
+
     }
-  }
-  function phoneVerify() {
-    if (phone.value != "") {
+    if (phone == "") {
+      document.getElementById("signup_phone").innerHTML = "Phone No is Required";
+      document.getElementById("signup_phone").style.color = "Red";
       phone.style.border = "1px solid red";
-      phone_error.innerHTML = "";
-      return true;
+      return false;
+
     }
-  }
-  function dobVerify() {
-    if (dob.value != "") {
+    if (dob == "") {
+      document.getElementById("signup_dob").innerHTML = "D.O.B. is Required";
+      document.getElementById("signup_dob").style.color = "Red";
       dob.style.border = "1px solid red";
-      dob_error.innerHTML = "";
-      return true;
+      return false;
+
     }
-  }
-  function emailVerify() {
-    if (email.value != "") {
+    if (email == "") {
+      document.getElementById("signup_email").innerHTML = "Email is Required";
+      document.getElementById("signup_email").style.color = "Red";
       email.style.border = "1px solid red";
-      email_error.innerHTML = "";
-      return true;
+      return false;
+
     }
-  }
-  function passwordVerify() {
-    if (password.value != "") {
+    if (password == "") {
+      document.getElementById("signup_pssword").style.color = "Red";
+      document.getElementById("signup_pssword").innerHTML = "Password is Required";
       password.style.border = "1px solid red";
-      password_error.innerHTML = "";
-      return true;
+      return false;
+
     }
+    for (let i = 0; i < phone.length; i++) {
+      if (phone.charAt(i) < '0' || phone.charAt(i) > '9') {
+        document.getElementById("signup_phone").innerHTML = "Invalid Phone No";
+        document.getElementById("signup_phone").style.color = "Red";
+        phone.style.border = "1px solid red";
+        return false;
+      }
+
+    }
+
   }
+
+
+
 </script>
+
+
+
+
 
 </html>
