@@ -85,14 +85,18 @@ var server = http.createServer(function(req, res) {
 
   // Server index.html
   
-  
-        fs.readFile('document.hbs', function(err, data) {
-          
-            res.end(data);
-          
-        });
-        
-  
+  sql = `select token_id from token where id = "1"`;
+    con.query(sql, (error, result)=>{
+      token = result[0].token_id;
+      sql = `select name from employee where token_id = ${token}`;
+      var nam = result[0].name;
+      var file_json = {"name":nam }
+  fs.readFile('document.hbs', function(err, data) {
+
+      res.end(data);
+      
+    });
+  });
   
 });
 

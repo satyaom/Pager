@@ -10,12 +10,7 @@ $(document).ready(function() {
   socket.on('message', function(data) {
     $('#uploaded').append($('<div><a href="/'+data+'" target="_blank">'+data+'</a></div>'));
   });
-  socket.on('digSig', function(digSig) {
-    $('#uploaded').append($('<div>'+digSig+'</div>'));
-  });
-  socket.on('validate', function(validate) {
-    $('#uploaded').append($('<div>'+validate+'</div>'));
-  });
+  
 
 
   if ($.browser.msie || $.browser.opera) {
