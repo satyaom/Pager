@@ -79,6 +79,7 @@ app.post('/html/validate', urlencoded, (request, response)=>{
             
             if(pass == hashpass) {
                 var string = encodeURIComponent(sha256(result[0].User));
+               
                 response.redirect(`http://localhost:${port2}?valid=` + string);
                 
             } 
