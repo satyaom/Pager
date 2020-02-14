@@ -1,61 +1,3 @@
-/* =================================================================== 
- *
- *  Transcend v1.0 Main Stylesheet
- *  03-19-2018
- *  ------------------------------------------------------------------
- *
- *  TOC:
- *  # base style overrides
- *    ## links
- *  # typography & general theme styles
- *    ## Lists
- *    ## responsive video container
- *    ## floated image
- *    ## tables
- *    ## Spacing 
- *    ## pace.js styles - minimal
- *  # preloader
- *  # forms
- *    ## Style Placeholder Text
- *    ## Change Autocomplete styles in Chrome
- *  # buttons
- *  # additional components
- *    ## alert box
- *    ## additional typo styles
- *    ## skillbars
- *  # reusable and common theme styles
- *    ## display headings
- *  # header styles
- *    ## header logo
- *    ## main navigation
- *    ## mobile menu toggle 
- *  # home
- *    ## home content
- *    ## home sidelinks
- *    ## home scroll
- *    ## home scroll
- *    ## home animations
- *  # about
- *    ## about process
- *  # services
- *    ## services list
- *  # works
- *    ## bricks/masonry
- *  # testimonials
- *  # stats 
- *  # contact 
- *    ## contact social
- *    ## subscribe
- *    ## copyright
- *    ## go to top
- *
- * =================================================================== */
-
-
-/* ===================================================================
- * # base style overrides
- *
- * ------------------------------------------------------------------- */
 
 html {
     font-size: 10px;
@@ -1364,7 +1306,7 @@ input::-moz-focus-inner {
     font-size: 6rem;
     line-height: 1.3;
     letter-spacing: 0;
-    color: #000000;
+    color: #ffffff;
     letter-spacing: -0.03rem;
     margin-top: 0;
     margin-bottom: 4.8rem;
@@ -1380,7 +1322,7 @@ input::-moz-focus-inner {
     line-height: 1.3125;
     text-transform: uppercase;
     letter-spacing: 0.25rem;
-    color: #000000;
+    color: #ffffff;
     margin-top: 0;
     margin-bottom: 2.1rem;
 }
@@ -2545,6 +2487,7 @@ html.no-csstransitions .home-content__main {
 .process__text {
     margin-left: 7.5rem;
     padding-right: 30px;
+    
 }
 
 
@@ -3727,5 +3670,9 @@ html.no-csstransitions .home-content__main {
 /*# sourceMappingURL=main.css.map */
 
 .text {
-    color: black;
+    color: rgb(255, 255, 255);
+}
+
+h4{
+    color: #34c0a9bd;
 }
