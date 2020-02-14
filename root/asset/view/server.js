@@ -98,44 +98,51 @@ app.post('/html/signup', urlencoded, (request, response)=>{
     pno = request.body.phone_number;
     dob = request.body.date;
     user = request.body.email;
-    password = sha256(request.body.pass);
-    //token generator
-    token = sha256(user);
-    var sql = `insert into employee values ("${token}", "${name}", "${pno}", "${dob}", "${user}");`;
-    
-    con.query(sql, (err, result)=>{
+    password = request.body.pass;
+    if (user == "" || password == ""){
         
-        if(err!=null && err.sqlMessage=="Duplicate entry '"+token+"' for key 'PRIMARY'")
-        {
+    }
+    else{
+        password = sha256(request.body.pass);
+        //token generator
+        token = sha256(user);
+        var sql = `insert into employee values ("${token}", "${name}", "${pno}", "${dob}", "${user}");`;
         
-        response.render('Error',{
-            error:"Already Signed up.",
-            link:'/',
-            method:'get'
+        con.query(sql, (err, result)=>{
+            
+            if(err!=null && err.sqlMessage=="Duplicate entry '"+token+"' for key 'PRIMARY'")
+            {
+            
+            response.render('Error',{
+                error:"Already Signed up.",
+                link:'/',
+                method:'get'
+            })
+            }
+            else if(err){
+                response.render('Error', {
+                    error:'could\'t connect to database',
+                    link:'/',
+                    method:'get'
+                })
+            }
+            else {
+                response.render('submit', {
+                    Name:name, 
+                    Token:token,
+                    link:'/',
+                    method:'get'
+                })
+                var sql = `insert into login values ("${user}", "${password}");`;
+                con.query(sql);
+                var keypair = require('keypair');
+                var pair = keypair()
+                sql = `insert into tkey values ("${token}", "${pair.public}", "${pair.private}")`;
+                con.query(sql);
+            }
         })
-        }
-        else if(err){
-            response.render('Error', {
-                error:'could\'t connect to database',
-                link:'/',
-                method:'get'
-            })
-        }
-        else {
-            response.render('submit', {
-                Name:name, 
-                Token:token,
-                link:'/',
-                method:'get'
-            })
-            var sql = `insert into login values ("${user}", "${password}");`;
-            con.query(sql);
-            var keypair = require('keypair');
-            var pair = keypair()
-            sql = `insert into tkey values ("${token}", "${pair.public}", "${pair.private}")`;
-            con.query(sql);
-        }
-    })
+    }
+   
     
    
 })
