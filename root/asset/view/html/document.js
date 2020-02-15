@@ -174,7 +174,7 @@ socket.sockets.on('connection', function(client) {
         async function run() {
           const res = await qrcode.toDataURL(signature);
 
-          fs.writeFileSync('./Info.hbs', `<img src="${res}">`);
+          fs.writeFileSync('./qr.html', `<img src="${res}">`);
           console.log('Wrote to ./qr.html');
         }
         })
