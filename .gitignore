@@ -1,4 +1,4 @@
 node_modules
 package-lock.json
 root/asset/view/html/qr.html
-
+root/asset/view/html/uploads
