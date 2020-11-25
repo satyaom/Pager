@@ -1,1 +1,4 @@
-node_moules
+node_modules
+package-lock.json
+root/asset/view/html/qr.html
+

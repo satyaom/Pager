@@ -1,0 +1,37 @@
+{
+  "name": "tampro",
+  "version": "1.0.0",
+  "description": "<h3><b>Add sql cmd</b></h3><br> create database pager;<br> use pager;<br> create table login(User varchar(100), Pass varchar(100));<br> create table employee(token_id varchar(100) not null primary key, name varchar(100), phone_no varchar(100), date varchar(100), user varchar(100));<br> create table tkey(token_id varchar(100) not null primary key, public_key varchar(2000), private_key varchar(2000));<br> create table document(token_id varchar(100), dig_sig varchar(2000), public_key varchar(2000));<br> create table token(id int not null primary key, token_id varchar(100));<br>",
+  "main": "index.js",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "finalhandler": "^1.1.2",
+    "fs": "^0.0.1-security",
+    "hbs": "^4.1.0",
+    "http": "^0.0.0",
+    "http-server": "^0.12.1",
+    "js-sha256": "^0.9.0",
+    "keypair": "^1.0.1",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "random-number": "^0.0.9",
+    "qrcode": "^1.4.4",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satyaom/Tampro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satyaom/Tampro/issues"
+  },
+  "homepage": "https://github.com/satyaom/Tampro#readme"
+}
